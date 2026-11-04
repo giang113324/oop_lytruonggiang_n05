@@ -1,0 +1,28 @@
+class Xe {
+private:
+    int maXe;                  // Mã định danh xe
+    string loaiXe;             // "Car", "Motorcycle", "Bicycle"
+    int gioVao;                // 0..23
+    int thoiGianDo;           // 1..23
+    double phiDoXe;            // VND
+    bool dangChiemCho;
+public:
+    Xe();
+    Xe(int ma, const string& loai, int gio, int thoiLuong);
+    int layMaXe() const;
+    string layLoaiXe() const;
+    int layGioVao() const;
+    int layThoiGianDo() const;
+    double layPhiDoXe() const;
+    bool layDangChiemCho() const;
+    void ganMaXe(int ma);
+    void ganLoaiXe(const string& loai);
+    void ganGioVao(int gio);
+    void ganThoiLuongDo(int thoiLuong);
+    void ganPhiDoXe(double phi);
+    void ganDangChiemCho(bool trangThai);
+    static string chuanHoaLoaiXe(const string& loai);
+    static bool laLoaiXeHopLe(const string& loai);
+    void tinhPhiDoXe();
+    void hienThi() const;
+};
