@@ -1,9 +1,13 @@
 #include <iostream>
+#include <iomanip>
+#include <BaiXeClass.h>
+#include <InterfaceSystemClass.h>
+#include <PhuongTienClass.h>
 #include <string>
-#include "PhuongTienClass.h"
-#include "BaiXeClass.h"
-#include "InterfaceSystemClass.h"
-#include "XeClass.h"
 using namespace std;
 
-int main() {}
+int main() {
+    SystemInterface sys;
+    sys.runMenu();
+    return 0;
+}
