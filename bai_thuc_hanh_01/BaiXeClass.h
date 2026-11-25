@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <iomanip>
 #include "PhuongTienClass.h"
@@ -15,7 +16,13 @@ public:
     bai_xe(int ma, char kt);
 
     int lay_ma() const;
-    bool them(phuong_tien v);
+    bool them(phuong_tien v) {
+        int cap = (kich_thuoc == 'S') ? 1 : (kich_thuoc == 'M') ? 2 : 3;
+        if (cap >= 1 && !co1) { pt1 = v; co1 = true; return true; }
+        if (cap >= 2 && !co2) { pt2 = v; co2 = true; return true; }
+        if (cap >= 3 && !co3) { pt3 = v; co3 = true; return true; }
+        return false;
+    }
     bool xoa(int ma_xe);
     bool chua(int ma_xe) const;
     void hien_thi() const;
@@ -27,14 +34,6 @@ bai_xe::bai_xe() : ma_bai(0), kich_thuoc('S'), co1(false), co2(false), co3(false
 bai_xe::bai_xe(int ma, char kt) : ma_bai(ma), kich_thuoc(kt), co1(false), co2(false), co3(false) {}
 
 int bai_xe::lay_ma() const { return ma_bai; }
-
-bool bai_xe::them(phuong_tien v) {
-    int cap = (kich_thuoc == 'S') ? 1 : (kich_thuoc == 'M') ? 2 : 3;
-    if (cap >= 1 && !co1) { pt1 = v; co1 = true; return true; }
-    if (cap >= 2 && !co2) { pt2 = v; co2 = true; return true; }
-    if (cap >= 3 && !co3) { pt3 = v; co3 = true; return true; }
-    return false;
-}
 
 bool bai_xe::xoa(int ma_xe) {
     if (co1 && pt1.lay_ma_xe() == ma_xe) {

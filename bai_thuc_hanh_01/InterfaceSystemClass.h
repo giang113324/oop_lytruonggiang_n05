@@ -1,6 +1,8 @@
+#pragma once
 #include <iostream>
 #include <iomanip>
-#include <BaiXeClass.h>
+#include <utility>
+#include "BaiXeClass.h"
 using namespace std;
 
 class SystemInterface {
