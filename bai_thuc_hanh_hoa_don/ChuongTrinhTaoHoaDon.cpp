@@ -18,17 +18,15 @@ KH::KH() {
     diaChi = "";
 }
 void KH::Nhap() {
-    cout<<"Nhập tên";
+    cout<<"Ten Khach hang: ";
     cin>>hoTen;
-    cout<<"Nhập SDT";
+    cout<<"Nhap sdt: ";
     cin>>sdt;
-    cout<<"Nhập Địa chỉ";
+    cout<<"Nhap dia chi: ";
     cin>>diaChi;
 }
 void KH::In() {
-    cout<<"Tên la: "<<hoTen<<endl;
-    cout<<"SDT: "<<sdt<<endl;
-    cout<<"Địa chỉ: "<<diaChi<<endl;
+    cout<<"Ten la: "<<hoTen<<" | "<<"SDT: "<<sdt<<" | "<<"Dia Chi: "<<diaChi<<endl;
 }
 
 class ChuCuaHang {
@@ -50,23 +48,20 @@ ChuCuaHang::ChuCuaHang(){
     msThue = 0;
 };
 void ChuCuaHang::Nhap() {
-    cout<<"Nhập tên";
+    cout<<"Ten Chu cua hang la: ";
     cin>>hoTen;
-    cout<<"Nhập SDT";
+    cout<<"Sdt la: ";
     cin>>sdt;
-    cout<<"Nhập Địa chỉ";
+    cout<<"Dia chi la: ";
     cin>>diaChi;
-    cout<<"Nhập Tên Cửa Hàng";
+    cout<<"Nhap ten cua hang: ";
     cin>>tenCuaHang;
-    cout<<"Nhập mã số thuế";
+    cout<<"Nhap ma so thue: ";
     cin>>msThue;
 }
 void ChuCuaHang::In() {
-    cout<<"Tên la: "<<hoTen<<endl;
-    cout<<"SDT: "<<sdt<<endl;
-    cout<<"Địa chỉ: "<<diaChi<<endl;
-    cout<<"Tên cửa hàng: "<<tenCuaHang<<endl;
-    cout<<"Mã số thuế: "<<msThue<<endl;
+    cout<<"Ten chu cua hang: "<<hoTen<<" | "<<"SDT: "<<sdt<<" | "<<"Dia Chi: "<<diaChi<<endl;
+    cout<<"Ten cua hang: "<<tenCuaHang<<" | "<<"Ma so thue: "<<msThue<<endl;
 }
 
 class MatHang {
@@ -89,21 +84,21 @@ MatHang::MatHang(){
     dvt = "";
 }
 void MatHang::Nhap() {
-    cout<<"Nhập tên mặt hàng";
+    cout<<"Nhap ten mat hang: ";
     cin>>tenMatHang;
-    cout<<"Nhập số lượng";
+    cout<<"Nhap so luong: ";
     cin>>sl;
-    cout<<"Nhập đơn giá";
+    cout<<"Nhap don gia: ";
     cin>>donGia;
-    cout<<"Nhập đơn vị tính";
+    cout<<"Nhap dvt: ";
     cin>>dvt;
 }
 void MatHang::In() {
-    cout<<"Tên mặt hàng: "<<tenMatHang<<endl;
-    cout<<"Số lượng: "<<sl<<endl;
-    cout<<"Đơn giá: "<<donGia<<endl;
-    cout<<"Đơn vị: "<<dvt<<endl;
-    cout<<"Thành tiền: "<<ThanhTien()<<endl;
+    cout<<"Ten mat hang: "<<tenMatHang<<endl;
+    cout<<"So luong: "<<sl<<endl;
+    cout<<"Don gia: "<<donGia<<endl;
+    cout<<"Don vi tinh: "<<dvt<<endl;
+    cout<<"Total: "<<ThanhTien()<<"\n"<<endl;
 }
 
 class HoaDon {
@@ -115,37 +110,46 @@ class HoaDon {
         HoaDon();
         void Nhap();
         void In();
+        float TongTien(){
+            float sum = 0;
+            for (int i = 0; i<soMH; i++) {
+                sum += a[i].ThanhTien();
+            }
+            return sum;
+        };
 };
 HoaDon::HoaDon(){
     soMH = 0;
     a = NULL;
 };
 void HoaDon::Nhap() {
-    cout<<"Nhập thông tin chủ cửa hàng";
+    cout<<"Nhap thong tin chu cua hang\n";
     x.Nhap();
-    cout<<"Nhập thông tin khách hàng";
+    cout<<"Nhap thong tin khach hang\n";
     y.Nhap();
-    cout<<"Nhập số lượng mặt hàng";
+    cout<<"Nhap so luong mat hang\n";
     cin>>soMH;
     a = new MatHang[soMH];
     for (int i = 0; i<soMH; i++) {
-        cout<<"Nhập thông tin mặt hàng";
+        cout<<"Nhap thong tin mat hang: \n";
         a[i].Nhap();
     }
 }
 void HoaDon::In() {
-    cout<<"Thông tin chủ cửa hàng";
+    cout<<"\nThong tin chu cua hang\n";
     x.In();
-    cout<<"Thông tin khách hàng";
+    cout<<"\nThong tin khach hang\n";
     y.In();
-    cout<<"Số lượng mặt hàng";
-    cout<<soMH;
+    cout<<"So luong mat hang: "<<soMH<<"\n"<<endl;
     for (int i = 0; i<soMH; i++) {
-        cout<<"Thông tin mặt hàng";
+        cout<<"Thong tin Mat Hang: \n";
         a[i].In();
     }
+    cout<<"Tong tien: "<<TongTien()<<endl;
 }
 
 int main() {
-    cout<<"HII";
+    HoaDon i;
+    i.Nhap();
+    i.In();
 }
